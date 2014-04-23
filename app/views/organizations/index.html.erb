@@ -1,0 +1,7 @@
+<h2>Non Profits currently taking Donations</h2>
+
+<ul>
+  <% @organizations.each do |organization| %>
+    <li><%= organization.name %></li>
+  <% end %>
+</ul>

@@ -1,5 +1,5 @@
 Charity::Application.routes.draw do
-  resources :organizations
+  root 'organizations#index'
 
-  root 'organization#index'
+  resources :organizations
 end

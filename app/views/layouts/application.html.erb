@@ -7,6 +7,17 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+  <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="container">
+      <%= link_to "Charity Case", root_url,
+        :class => "navbar-text navbar-left" %>
+    </div>
+  </div>
+  <div class="navbar navbar-inverse navbar-fixed-bottom" role="navigation">
+    <div class="container">
+      <%= link_to "Add New Organization", new_organization_path, :class => "navbar-text navbar-left" %>
+    </div>
+  </div>
   <div class="container">
     <%= flash[:notice] %>
     <%= flash[:alert] %>

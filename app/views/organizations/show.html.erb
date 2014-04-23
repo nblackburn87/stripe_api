@@ -7,3 +7,9 @@
        <%= @organization.description %>
     </p>
   </div>
+
+  <div class="navbar navbar-inverse navbar-fixed-bottom" role="navigation">
+    <div class="container">
+      <%= link_to "Edit Organization", edit_organization_path, :class => "navbar-text navbar-left" %>
+    </div>
+  </div>

@@ -2,6 +2,6 @@
 
 <ul>
   <% @organizations.each do |organization| %>
-    <li><%= organization.name %></li>
+    <li><%= link_to "#{organization.name}", organization_path(organization) %></li>
   <% end %>
 </ul>

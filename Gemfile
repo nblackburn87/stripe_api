@@ -8,6 +8,7 @@ gem 'rest_client'
 gem 'jquery-rails'
 gem 'turbolinks'
 gem 'bootstrap-sass'
+gem 'stripe', :git => 'https://github.com/stripe/stripe-ruby'
 
 group :development do
   gem 'better_errors'

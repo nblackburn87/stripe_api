@@ -1,11 +1,40 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Charity</title>
+  <script type="text/javascript" src="https://js.stripe.com/v2/"></script>
+  <script type="text/javascript">
+    Stripe.setPublishableKey('pk_test_6pRNASCoBOKtIshFeQd4XMUh');
+
+  var stripeResponseHandler = function(status, response) {
+    var $form = $('#payment-form');
+
+    if (response.error) {
+      $form.find('.payment-errors').text(response.error.message);
+      $form.find('button').prop('disabled', false);
+    } else {
+      var token = response.id;
+      $form.append($('<input type="hidden" name="stripeToken" />').val(token));
+      $form.get(0).submit();
+    }
+  };
+
+  jQuery(function($) {
+    $('#payment-form').submit(function(event) {
+      var $form = $(this);
+
+      $form.find('button').prop('disabled', true);
+      Stripe.card.createToken($form, stripeResponseHandler);
+      return false;
+    });
+  });
+  </script>
+
+  <title>Donation App</title>
   <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
   <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
   <%= csrf_meta_tags %>
 </head>
+
 <body>
   <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
     <div class="container">

@@ -8,10 +8,34 @@ class OrganizationsController < ApplicationController
     @organization = Organization.new
   end
 
+  def show
+    @organization = Organization.find params[:id]
+  end
+
+  def edit
+    @organization = Organization.find params[:id]
+  end
+
+  def update
+    @organization = Organization.find params[:id]
+     if @organization.update organization_params
+      flash[:notice] = "Organization details updated!"
+      redirect_to organization_path(@organization)
+    else
+      render 'edit'
+    end
+  end
+
+  def destroy
+    @organization = Organization.find params[:id]
+    @organization.delete
+    redirect_to root_url
+  end
+
   def create
     @organization = Organization.new organization_params
     if @organization.save
-      flash[:notice] = "Non Profit added to database."
+      flash[:notice] = "Non profit added to database"
       redirect_to organizations_path
     else
       render 'new'
